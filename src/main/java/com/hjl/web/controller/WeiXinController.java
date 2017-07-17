@@ -60,12 +60,12 @@ public class WeiXinController {
         items.add(new WeiXinReplyImgTextMsg.Item()
                 .setDescription("我瞬间 是是撒 大大打发第三方水电费沙发斯蒂芬是的发送到分水电费水电费水电费水电费水电费水电费双方都爽肤水发顺丰收水电费水电费第三方水电费水电费第三方地方")
                 .setPicUrl("http://img4.imgtn.bdimg.com/it/u=1264996776,4079453714&fm=26&gp=0.jpg")
-                .setTitle("七月福利第一波 快来抢啊!")
+                .setTitle("\\ue159七月福利第一波 快来抢啊!")
                 .setUrl("http://img4.imgtn.bdimg.com/it/u=1264996776,4079453714&fm=26&gp=0.jpg"));
         items.add(new WeiXinReplyImgTextMsg.Item()
                 .setDescription("我瞬间 是是撒 大大打发第三方水电费沙发斯蒂芬是的发送到分水电费水电费水电费水电费水电费水电费双方都爽肤水发顺丰收水电费水电费第三方水我瞬间 是是撒 大大打发第三方水电费沙发斯蒂芬是的发送到分水电费水电费水电费水电费水电费水电费双方都爽肤水发顺丰收水电费水电费第三方水")
                 .setPicUrl("http://pic.58pic.com/58pic/13/61/00/49S58PICvJi_1024.jpg")
-                .setTitle("科普 | 看完我就傻了 这几条汽车冷知识颠覆了我的三观")
+                .setTitle("\ue159科普 | 看完我就傻了 这几条汽车冷知识颠覆了我的三观")
                 .setUrl("http://pic.58pic.com/58pic/13/61/00/49S58PICvJi_1024.jpg"));
     
         return ReplyMsgFactory.getNewsIMg(message ,items);
