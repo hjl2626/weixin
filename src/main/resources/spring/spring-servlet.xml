@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
+
+	<!-- 启用spring mvc 注解   -->
+	<context:annotation-config />
+	<!-- <bean id="payPrefessionInfoService" class="com.feinno.pay.service.impl.PayPrefessionInfoServiceImpl"></bean> -->
+
+	<!-- 不扫描带有@Controller注解的类。因为这些类已经随容器启动时，在servlet-context中扫描过一遍了 -->
+	<context:component-scan base-package="com.hjl" />
+
+	<!-- 定义无Controller的path<->view直接映射 -->
+	<mvc:view-controller path="/" view-name="index" />
+
+
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 将无法mapping到Controller的path交给default servlet handler处理 -->
+	<mvc:default-servlet-handler />
+
+	<!-- 拦截器 -->
+	<!--<mvc:interceptors>-->
+		<!--&lt;!&ndash; 多个拦截器,顺序执行 &ndash;&gt;-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/pay/execute*" />&lt;!&ndash; 如果不配置或/*,将拦截所有的Controller &ndash;&gt;-->
+			<!--<mvc:mapping path="/refund/execute*" />-->
+			<!--<bean class="com.feinno.pay.web.interceptor.PayInterceptor"></bean>-->
+		<!--</mvc:interceptor>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/pay/payment*" />-->
+			<!--<bean class="com.feinno.pay.web.interceptor.RepeatPayInterceptor" />-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+	<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+		<!--<property name="defaultErrorView" value="/index.jsp" />-->
+	<!--</bean>-->
+	<!-- 定义JSP文件的位置 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+
+
+	<bean class="com.hjl.exception.resolver.BizExceptionResolver">
+		<property name="defaultErrorView" value="/error"/>
+		<property name="defaultStatusCode" value="500"/>
+		<!-- 配置多个statusCode -->
+		<property name="statusCodes">
+			<props>
+				<prop key="/error">500</prop>
+				<prop key="/404">404</prop>
+			</props>
+		</property>
+		<!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
+		<property name="warnLogCategory" value="WARN"/>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error</prop>
+				<prop key="java.lang.Exception">/error</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			<value>104857600</value><!-- 上传文件大小限制为100M，100*1024*1024 -->
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+</beans>
