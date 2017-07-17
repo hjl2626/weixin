@@ -1,7 +1,7 @@
 package com.hjl.base.utils;
 
 
-import com.hjl.core.message.bean.weixin.WeiXinTextMessage;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyTextMsg;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
@@ -70,6 +70,6 @@ public class XmlUtil {
 				" <MsgType><![CDATA[text]]></MsgType>" +
 				" <Content><![CDATA[this is a test]]></Content>" +
 				" <MsgId>1234567890123456</MsgId>" +
-				"</xml>" , WeiXinTextMessage.class));
+				"</xml>" , WeiXinReplyTextMsg.class));
 	}
 }

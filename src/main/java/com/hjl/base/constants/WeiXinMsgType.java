@@ -25,4 +25,10 @@ public final class WeiXinMsgType {
 	
 	public final static String MSG_TYPE_EVENT = "event";
 	
+	public final static String MSG_TYPE_MP_NEWS = "mpnews";
+	
+	public final static String MSG_TYPE_MP_VIDEO = "mpvideo";
+	
+	public final static String MSG_TYPE_WXCARD = "wxcard";
+	
 }

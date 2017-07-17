@@ -4,7 +4,7 @@ import com.hjl.core.api.reply.ReplyStrategy;
 import com.hjl.base.constants.RedisKey;
 import com.hjl.base.constants.WeiXinMsgType;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyMsg;
 import com.hjl.base.utils.RedisUtil;
 import com.hjl.base.utils.StringUtil;
 import org.apache.log4j.Logger;

@@ -5,7 +5,7 @@ import com.hjl.core.activity.Prize;
 import com.hjl.core.api.reply.ReplyStrategy;
 import com.hjl.core.factory.ReplyMsgFactory;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyMsg;
 import com.hjl.base.utils.JacksonUtil;
 import com.hjl.base.utils.RedisUtil;
 import com.hjl.base.utils.StringUtil;

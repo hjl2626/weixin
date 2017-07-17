@@ -9,7 +9,7 @@ import com.hjl.base.context.AppContext;
 import com.hjl.core.exception.BizException;
 import com.hjl.core.factory.ReplyMsgFactory;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyMsg;
 import com.hjl.core.message.bean.weixin.WeiXinToken;
 import com.hjl.core.message.bean.weixin.menu.Menu;
 import com.hjl.core.message.enums.RespCodeEnum;

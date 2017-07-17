@@ -2,7 +2,7 @@ package com.hjl.core.service;
 
 import com.hjl.core.exception.BizException;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyMsg;
 import com.hjl.core.message.bean.weixin.menu.Menu;
 
 /**

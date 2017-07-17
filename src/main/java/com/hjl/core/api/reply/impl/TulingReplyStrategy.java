@@ -5,7 +5,7 @@ import com.hjl.base.config.AppConfig;
 import com.hjl.base.constants.WeiXinMsgType;
 import com.hjl.core.message.bean.tuling.*;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.replyMsg.WeiXinReplyMsg;
 import com.hjl.base.utils.GsonUtil;
 import com.hjl.base.utils.HttpUtil;
 import org.springframework.stereotype.Component;

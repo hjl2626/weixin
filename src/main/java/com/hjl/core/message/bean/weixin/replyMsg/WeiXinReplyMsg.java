@@ -1,4 +1,4 @@
-package com.hjl.core.message.bean.weixin;
+package com.hjl.core.message.bean.weixin.replyMsg;
 
 import javax.xml.bind.annotation.*;
 
