@@ -57,7 +57,7 @@
 
 
 
-	<bean class="com.hjl.exception.resolver.BizExceptionResolver">
+	<bean class="com.hjl.core.exception.resolver.BizExceptionResolver">
 		<property name="defaultErrorView" value="/error"/>
 		<property name="defaultStatusCode" value="500"/>
 		<!-- 配置多个statusCode -->

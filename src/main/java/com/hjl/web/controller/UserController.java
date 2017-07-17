@@ -1,11 +1,11 @@
 package com.hjl.web.controller;
 
 
-import com.hjl.exception.BizException;
-import com.hjl.message.bean.JsonDataResult;
-import com.hjl.message.enums.RespCodeEnum;
-import com.hjl.model.domain.WeiXinUser;
-import com.hjl.service.WeiXinUserService;
+import com.hjl.core.exception.BizException;
+import com.hjl.core.message.bean.JsonDataResult;
+import com.hjl.core.message.enums.RespCodeEnum;
+import com.hjl.core.model.domain.WeiXinUser;
+import com.hjl.core.service.WeiXinUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

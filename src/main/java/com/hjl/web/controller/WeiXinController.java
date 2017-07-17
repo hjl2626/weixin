@@ -1,14 +1,13 @@
 package com.hjl.web.controller;
 
-import com.hjl.exception.BizException;
-import com.hjl.factory.ReplyMsgFactory;
-import com.hjl.message.bean.weixin.WeiXinReceiveMsg;
-import com.hjl.message.bean.weixin.WeiXinReplyImgMsg;
-import com.hjl.message.bean.weixin.WeiXinReplyImgTextMsg;
-import com.hjl.message.bean.weixin.WeiXinReplyMsg;
-import com.hjl.message.bean.weixin.menu.Menu;
-import com.hjl.service.WeiXinService;
-import com.hjl.utils.GsonUtil;
+import com.hjl.core.exception.BizException;
+import com.hjl.core.factory.ReplyMsgFactory;
+import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
+import com.hjl.core.message.bean.weixin.WeiXinReplyImgTextMsg;
+import com.hjl.core.message.bean.weixin.WeiXinReplyMsg;
+import com.hjl.core.message.bean.weixin.menu.Menu;
+import com.hjl.core.service.WeiXinService;
+import com.hjl.base.utils.GsonUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
