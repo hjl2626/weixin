@@ -23,7 +23,10 @@ public class RedisPool {
 		config.setTestOnBorrow(POOL_DEFAULT_VALUE.getBoolean("redis.pool.testOnBorrow"));
 		config.setTestOnReturn(POOL_DEFAULT_VALUE.getBoolean("redis.pool.testOnReturn"));
 		String[] url = POOL_DEFAULT_VALUE.getProperty("redis.server.url").split(":");
-		pool = new JedisPool(config, url[0], Integer.valueOf(url[1]));
+		pool = new JedisPool(config, url[0], Integer.valueOf(url[1])
+				,POOL_DEFAULT_VALUE.getInteger("redis.pool.timeOut") ,
+				null
+				,POOL_DEFAULT_VALUE.getInteger("POOL_DEFAULT_VALUE"));
 	}
 	
 	public static JedisPool getPool() {
