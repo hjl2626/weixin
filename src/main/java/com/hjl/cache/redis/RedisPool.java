@@ -26,7 +26,7 @@ public class RedisPool {
 		pool = new JedisPool(config, url[0], Integer.valueOf(url[1])
 				,POOL_DEFAULT_VALUE.getInteger("redis.pool.timeOut") ,
 				null
-				,POOL_DEFAULT_VALUE.getInteger("POOL_DEFAULT_VALUE"));
+				,POOL_DEFAULT_VALUE.getInteger("redis.pool.db"));
 	}
 	
 	public static JedisPool getPool() {
