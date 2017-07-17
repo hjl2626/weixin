@@ -47,7 +47,7 @@ public class WeiXinUserServiceImpl implements WeiXinUserService {
 			throw new BizException(RespCodeEnum.RC_0001.code() ,RespCodeEnum.RC_0001.description());
 		}
 
-		String url = AppConfig.getConfigWexinUrl() + "user/info?" + "access_token="+ token + "&openid=" + openid + "&lang=zh_CN";
+		String url = AppConfig.Wechat.getConfigWexinUrl() + "user/info?" + "access_token="+ token + "&openid=" + openid + "&lang=zh_CN";
 		WeiXinUser user;
 		try {
 			String userStr = HttpUtil.httpGet(url);
@@ -78,7 +78,7 @@ public class WeiXinUserServiceImpl implements WeiXinUserService {
 			return null;
 		}
 //		https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
-		String url = AppConfig.getConfigWexinUrl() + "user/get?" + "access_token="+ token + "&next_openid=";
+		String url = AppConfig.Wechat.getConfigWexinUrl() + "user/get?" + "access_token="+ token + "&next_openid=";
 
 		Map<String ,Object> resp;
 		try {

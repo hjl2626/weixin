@@ -44,7 +44,7 @@ public class SpringMailUtil {
 			MimeMessageHelper helper = new MimeMessageHelper(msg, true ,"utf-8");
 			helper.setSubject(subject);
 			helper.setText(body ,true);
-			helper.setFrom(AppConfig.getMailUserName(),"nick");
+			helper.setFrom(AppConfig.Mail.getMailUserName(),"nick");
 
 			for (String s : tos.split(";")) {
 				String[] tosAndNick = s.split(",");
@@ -57,10 +57,10 @@ public class SpringMailUtil {
 			for (Resource r : attachments) {
 				helper.addAttachment(MimeUtility.encodeText(r.getFilename()) ,r);
 			}
-			sender.setUsername(AppConfig.getMailUserName()); // 根据自己的情况,设置username
-			sender.setPassword(AppConfig.getMailPassword()); // 根据自己的情况, 设置password
+			sender.setUsername(AppConfig.Mail.getMailUserName()); // 根据自己的情况,设置username
+			sender.setPassword(AppConfig.Mail.getMailPassword()); // 根据自己的情况, 设置password
 			Properties prop = new Properties();
-			prop.put("mail.smtp.auth", AppConfig.getMailSmtpAuth()); // 将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确
+			prop.put("mail.smtp.auth", AppConfig.Mail.getMailSmtpAuth()); // 将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确
 			prop.put("mail.smtp.timeout", "25000");
 			sender.setJavaMailProperties(prop);
 			sender.send(msg);

@@ -1,7 +1,8 @@
 package com.hjl.core.api.reply.impl;
 
-import com.hjl.core.api.reply.ReplyStrategy;
 import com.hjl.base.config.AppConfig;
+import com.hjl.core.api.reply.ReplyStrategy;
+
 import com.hjl.base.constants.WeiXinMsgType;
 import com.hjl.core.message.bean.tuling.*;
 import com.hjl.core.message.bean.weixin.WeiXinReceiveMsg;
@@ -33,8 +34,8 @@ public class TulingReplyStrategy implements ReplyStrategy {
 	}
 	
 	private String getReply(String userId, String content) {
-		String url = AppConfig.getConfigTuLingApiUrl();
-		String key = AppConfig.getConfigTuLingApiKey();
+		String url = AppConfig.Config.getConfigTuLingApiUrl();
+		String key = AppConfig.Config.getConfigTuLingApiKey();
 		ApiRequest request = new ApiRequest()
 				.setInfo(content)
 				.setKey(key)

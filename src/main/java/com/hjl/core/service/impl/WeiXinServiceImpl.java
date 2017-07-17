@@ -70,9 +70,9 @@ public class WeiXinServiceImpl implements WeiXinService {
 
 	@Override
 	public String getTokenFromServer() {
-		String appID = AppConfig.getConfigWexinAppID();
-		String appsecret = AppConfig.getConfigWexinAppsecret();
-		String url = AppConfig.getConfigWexinUrl() + "token?" + "grant_type=client_credential&appid=" + appID + "&secret=" + appsecret;
+		String appID = AppConfig.Wechat.getConfigWexinAppID();
+		String appsecret = AppConfig.Wechat.getConfigWexinAppsecret();
+		String url = AppConfig.Wechat.getConfigWexinUrl() + "token?" + "grant_type=client_credential&appid=" + appID + "&secret=" + appsecret;
 		String result = HttpUtil.httpGet(url);
 		WeiXinToken weiXinToken = (WeiXinToken) GsonUtil.fromJson(result, WeiXinToken.class);
 		if (weiXinToken != null && StringUtils.isNotEmpty(weiXinToken.getAccessToken())) {

@@ -24,8 +24,9 @@ import java.util.Map;
 public final class HttpUtil {
 
 	private static Logger logger = Logger.getLogger(HttpUtil.class);
-
-
+	
+	
+	private static CloseableHttpClient client = HttpClients.createDefault();
 	private HttpUtil(){
 
 	}
@@ -36,7 +37,7 @@ public final class HttpUtil {
 	 * @return
 	 */
 	public static String httpGet(String url){
-		CloseableHttpClient client = HttpClients.createDefault();
+		
 		CloseableHttpResponse response = null;
 		String result = "";
 		HttpGet get = new HttpGet(url);
@@ -48,7 +49,6 @@ public final class HttpUtil {
 			logger.error("请求url = " + url + " FAILED", e);
 		} finally {
 			try {
-				client.close();
 				if (response != null) {
 					response.close();
 				}
@@ -65,7 +65,6 @@ public final class HttpUtil {
 	 * @return
 	 */
 	public static String httpPost(String url , Map<String ,Object> data) {
-		CloseableHttpClient client = HttpClients.createDefault();
 		CloseableHttpResponse response = null;
 		HttpPost post = new HttpPost(url);
 		String result ="";
@@ -92,7 +91,6 @@ public final class HttpUtil {
 				logger.error("请求url = " + url + " FAILED", e);
 			} finally {
 				try {
-					client.close();
 					if (response != null) {
 						response.close();
 					}
@@ -111,7 +109,6 @@ public final class HttpUtil {
 	 * @return
 	 */
 	public static String httpPostWithJson(String url , String content) {
-		CloseableHttpClient client = HttpClients.createDefault();
 		CloseableHttpResponse response = null;
 		HttpPost post = new HttpPost(url);
 		String result ="";
@@ -130,7 +127,6 @@ public final class HttpUtil {
 			logger.error("请求url = " + url + " FAILED", e);
 		} finally {
 			try {
-				client.close();
 				if (response != null) {
 					response.close();
 				}

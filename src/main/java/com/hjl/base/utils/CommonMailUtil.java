@@ -39,9 +39,9 @@ public final class CommonMailUtil {
 
 		try {
 			MultiPartEmail email = new MultiPartEmail();
-			email.setHostName(AppConfig.getMailHost()); // 发送服务器
-			email.setAuthentication(AppConfig.getMailUserName(), AppConfig.getMailPassword()); // 发送邮件的用户名和密码
-			email.setDebug(AppConfig.getMailIsDebug());
+			email.setHostName(AppConfig.Mail.getMailHost()); // 发送服务器
+			email.setAuthentication(AppConfig.Mail.getMailUserName(), AppConfig.Mail.getMailPassword()); // 发送邮件的用户名和密码
+			email.setDebug(AppConfig.Mail.getMailIsDebug());
 			for (String s : tos.split(";")) {
 				String[] tosAndNick = s.split(",");
 				if (tosAndNick.length != 2 || StringUtils.isEmpty(tosAndNick[0]) || StringUtils.isEmpty(tosAndNick[1])) {
@@ -50,7 +50,7 @@ public final class CommonMailUtil {
 				email.addTo(tosAndNick[0], tosAndNick[1]); // 接收邮箱
 			}
 
-			email.setFrom("nick <" + AppConfig.getMailUserName() + ">"); // 发送邮箱
+			email.setFrom("nick <" + AppConfig.Mail.getMailUserName() + ">"); // 发送邮箱
 			email.setSubject(subject);// 主题
 			email.addPart(body, "text/html;charset=utf-8");
 			// 添加附件
