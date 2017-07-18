@@ -50,7 +50,7 @@ public class WeiXinUserServiceImpl implements WeiXinUserService {
 		String url = AppConfig.Wechat.getConfigWexinUrl() + "user/info?" + "access_token="+ token + "&openid=" + openid + "&lang=zh_CN";
 		WeiXinUser user;
 		try {
-			String userStr = HttpUtil.httpGet(url);
+			String userStr = HttpUtil.httpGet(url , null);
 			logger.info("getUserInfo weixin接口返回" + userStr);
 			user = (WeiXinUser) GsonUtil.fromJson(userStr, WeiXinUser.class);
 			// 微信返回错误
@@ -82,7 +82,7 @@ public class WeiXinUserServiceImpl implements WeiXinUserService {
 
 		Map<String ,Object> resp;
 		try {
-			String result = HttpUtil.httpGet(url);
+			String result = HttpUtil.httpGet(url ,null);
 			// 微信返回错误
 			 resp =(Map) GsonUtil.fromJson(result,Map.class);
 			if(resp.get("data") == null){

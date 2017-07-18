@@ -81,7 +81,7 @@ public class WeiXinController {
     
     @ResponseBody
     @RequestMapping(value = "createMenu")
-    public String createMenu(@RequestBody Menu menu) throws BizException {
+    public String createMenu(@RequestBody Menu menu) throws BizException, IOException {
         return weiXinService.createMenu(menu);
     }
     

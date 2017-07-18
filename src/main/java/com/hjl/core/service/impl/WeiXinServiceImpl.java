@@ -19,11 +19,14 @@ import com.hjl.base.utils.GsonUtil;
 import com.hjl.base.utils.HttpUtil;
 import com.hjl.base.utils.RedisUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 /**
@@ -41,7 +44,7 @@ public class WeiXinServiceImpl implements WeiXinService {
 
 	
 
-	private static Logger logger = Logger.getLogger(WeiXinServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(WeiXinServiceImpl.class);
 
 
 	@Override
@@ -69,11 +72,11 @@ public class WeiXinServiceImpl implements WeiXinService {
 
 
 	@Override
-	public String getTokenFromServer() {
+	public String getTokenFromServer() throws IOException, URISyntaxException {
 		String appID = AppConfig.Wechat.getConfigWexinAppID();
 		String appsecret = AppConfig.Wechat.getConfigWexinAppsecret();
 		String url = AppConfig.Wechat.getConfigWexinUrl() + "token?" + "grant_type=client_credential&appid=" + appID + "&secret=" + appsecret;
-		String result = HttpUtil.httpGet(url);
+		String result = HttpUtil.httpGet(url ,null);
 		WeiXinToken weiXinToken = (WeiXinToken) GsonUtil.fromJson(result, WeiXinToken.class);
 		if (weiXinToken != null && StringUtils.isNotEmpty(weiXinToken.getAccessToken())) {
 			return weiXinToken.getAccessToken();
@@ -83,7 +86,7 @@ public class WeiXinServiceImpl implements WeiXinService {
 	}
 
 	@Override
-	public WeiXinReplyMsg chat(WeiXinReceiveMsg message)  {
+	public WeiXinReplyMsg chat(WeiXinReceiveMsg message) throws IOException {
 		ReplyStrategy replyStrategy;
 		
 		if(WeiXinMsgType.MSG_TYPE_EVENT.equals(message.getMsgType())){
@@ -143,11 +146,11 @@ public class WeiXinServiceImpl implements WeiXinService {
 	}
 	
 	@Override
-	public String createMenu(Menu menu) throws BizException {
-		String url = AppConfig.getConfigWexinUrl() +"menu/create?access_token=" + getToken();
+	public String createMenu(Menu menu) throws BizException, IOException {
+		String url = AppConfig.Wechat.getAddMenu() + "?access_token=" + getToken();
 		
-		logger.info("createMenu = " +  GsonUtil.toJson(menu));
-		String resp = HttpUtil.httpPostWithJson(url , GsonUtil.toJson(menu));
+		logger.debug("createMenu = {} "  , GsonUtil.toJson(menu));
+		String resp = HttpUtil.postJson(url , GsonUtil.toJson(menu));
 		return resp;
 	}
 	
@@ -160,7 +163,7 @@ public class WeiXinServiceImpl implements WeiXinService {
 				result = RedisUtil.get(GlobalConstant.WEIXIN_TOKEN_KEY);
 			}
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error("" , e);
 		}
 
 		return result;
@@ -168,7 +171,7 @@ public class WeiXinServiceImpl implements WeiXinService {
 
 
 	private boolean checkAuthorize(String signature, String timestamp, String nonce) {
-		String token = AppConfig.getConfigWexinToken();
+		String token = AppConfig.Wechat.getConfigWexinToken();
 		boolean result = false;
 		String[] data = {token , timestamp , nonce};
 		Arrays.sort(data);
