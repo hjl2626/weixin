@@ -4,8 +4,9 @@ package com.hjl.core.exception;
  * Created by hjl on 2016/12/20.
  */
 public class BizException extends Exception{
-
-
+	
+	
+	private static final long serialVersionUID = -2993560042427763023L;
 	private String code;
 
 	private String msg;

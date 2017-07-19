@@ -89,6 +89,9 @@ public class AppConfig {
         public static String getDelMenu(){
             return wechat.getProperty("wechat.delete.wechatMenu");
         }
+        public static String getGetQrcode(){
+            return wechat.getProperty("wechat.get.qrCode");
+        }
     
         public static String getMsgSendAll(){
             return wechat.getProperty("wechat.msg.send.all");
@@ -97,7 +100,23 @@ public class AppConfig {
         public static String getAddMaterial() {
             return wechat.getProperty("wechat.add.material");
         }
+    
+        public static String getMsgSendByOpenIds() {
+            return wechat.getProperty("wechat.msg.send.filter.openid");
+        }
+    
+    
+        public static String getBatchGetMaterial() {
+            return wechat.getProperty("wechat.batchget.material");
+        }
+    
+        public static String getUrlShort2Long() {
+            return wechat.getProperty("wechat.url.short2long");
+        }
+    
+    
         
+       
        
     }
     
