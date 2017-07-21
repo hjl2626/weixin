@@ -85,6 +85,7 @@ public class WeiXinUserServiceImpl implements WeiXinUserService {
 			String result = HttpUtil.httpGet(url ,null);
 			// 微信返回错误
 			 resp =(Map) GsonUtil.fromJson(result,Map.class);
+			 logger.info("getAllUser resp " + result);
 			if(resp.get("data") == null){
 				throw new BizException(RespCodeEnum.RC_0001.code() ,RespCodeEnum.RC_0001.description());
 			}
