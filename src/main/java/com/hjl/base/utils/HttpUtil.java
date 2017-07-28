@@ -92,7 +92,7 @@ public final class HttpUtil {
 			
 			if (statusCode == HttpStatus.SC_OK) {
 				HttpEntity resEntity = response.getEntity();
-				res = EntityUtils.toString(resEntity);
+				res = EntityUtils.toString(resEntity ,charset);
 				logger.debug("[HttpUtil uploadFiles] 调用完成 ,调用结果 {}" ,res);
 				HttpClientUtils.closeQuietly(response);
 			}
@@ -139,7 +139,7 @@ public final class HttpUtil {
 			
 			if (statusCode == HttpStatus.SC_OK) {
 				HttpEntity resEntity = response.getEntity();
-				res = EntityUtils.toString(resEntity);
+				res = EntityUtils.toString(resEntity,charset);
 				logger.debug("[HttpUtil httpGet] 调用完成 ,调用结果 {}" ,res);
 				HttpClientUtils.closeQuietly(response);
 			}
@@ -191,7 +191,7 @@ public final class HttpUtil {
 			
 			if (statusCode == HttpStatus.SC_OK) {
 				HttpEntity resEntity = response.getEntity();
-				res = EntityUtils.toString(resEntity);
+				res = EntityUtils.toString(resEntity ,"UTf-8");
 				logger.debug("[HttpUtil httpPost] 调用完成 ,调用结果 {}" ,res);
 				HttpClientUtils.closeQuietly(response);
 			}
@@ -231,7 +231,7 @@ public final class HttpUtil {
 			logger.debug("请求参数 statusCode {} {}" ,jsonContent , statusCode);
 			if (statusCode == HttpStatus.SC_OK) {
 				HttpEntity resEntity = response.getEntity();
-				res = EntityUtils.toString(resEntity);
+				res = EntityUtils.toString(resEntity ,charset);
 				logger.debug("[HttpUtil postJson] 调用完成 ,调用结果 {}" ,res);
 				HttpClientUtils.closeQuietly(response);
 			}
