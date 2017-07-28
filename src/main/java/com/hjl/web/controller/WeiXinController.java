@@ -86,9 +86,9 @@ public class WeiXinController {
 //
 //        return ReplyMsgFactory.getImgTextMsg(message ,items);
         
-            return ReplyMsgFactory.getTextMsg(message).setContent("Here is a boy: /::); /::Q");
+//            return ReplyMsgFactory.getTextMsg(message).setContent("Here is a boy: /::); /::Q");
 //        return ReplyMsgFactory.getImgMsg(message).setData(new WeiXinReplyImgMsg().setMediaId("OqNd2gHFb1_gzFc7HsalI_QnU1sSm4YDgSG00zfles_GFfvBoqHkaKBnEXJr1M4q"));
-//        return weiXinService.chat(message);
+        return weiXinService.chat(message);
     }
 
     @ResponseBody
